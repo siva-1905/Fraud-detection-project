@@ -172,6 +172,32 @@ In real-world fraud detection systems, data leakage is a critical risk that lead
 
 As a result, the production artifacts (`best_model_fixed.pkl` and `training_metadata_fixed.json`) reflect an authentic, zero-leakage enterprise deployment profile.
 
+## Application Demo
+
+### Fraud Prediction
+
+![Fraud](assets/fraud_prediction.png)
+
+### Legitimate Prediction
+
+![Legitimate](assets/legit_prediction.png)
+
+
+## Model Performance
+
+### Confusion Matrix
+
+![Confusion Matrix](reports/figures/confusion_matrix.png)
+
+### ROC Curve
+
+![ROC Curve](reports/figures/roc_curve.png)
+
+### Feature Importance
+
+![Feature Importance](reports/figures/feature_importance.png)
+
+
 ### Detailed Class Segmentation
 
 
