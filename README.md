@@ -1,189 +1,277 @@
-# 💳 Enterprise Credit Card Fraud Detection System
+# 💳 Credit Card Fraud Detection System
 
-An end-to-end, machine learning-driven analytics pipeline built to flag potentially fraudulent credit card transactions. By synthesizing historical transaction patterns, risk-based heuristics, and contextual device signals, this system provides a robust solution for minimizes financial risks while protecting consumer transaction workflows.
+An end-to-end Machine Learning project designed to identify fraudulent credit card transactions using behavioral analytics, risk-based features, and transaction patterns.
+
+The system performs data preprocessing, feature engineering, model training, evaluation, hyperparameter tuning, and real-time fraud prediction through a Streamlit web application.
 
 ---
 
-## 📌 Project Architecture
+## 📌 Project Overview
 
-The pipeline processes raw data, engineers highly predictive domain features, trains multiple classifier variants, and provisions an interactive inference portal.
+Credit card fraud causes significant financial losses worldwide. This project aims to build a reliable fraud detection system capable of distinguishing legitimate transactions from fraudulent ones using supervised machine learning techniques.
 
-       [ Raw Dataset ]
-              │
-              ▼
-     [ Data Preprocessing ]  ──► (Imputation, Scaling, Encoding)
-              │
-              ▼
-   [ Feature Engineering ]   ──► (Behavioral, Velocity & Risk Ratios)
-              │
-              ▼
-      [ Model Training ]     ──► (Logistic Regression, Decision Trees, Random Forest)
-              │
-              ▼
-     [ Model Evaluation ]    ──► (Precision-Recall Optimization for Imbalanced Data)
-              │
-              ▼
-  [ Hyperparameter Tuning ]  ──► (Grid/Random Search Cross-Validation)
-              │
-              ▼
-    [ Serialized Model ]     ──► (Artifact preservation via Joblib)
-              │
-              ▼
-   [ Streamlit Deployment ]  ──► (Real-Time Live Web Inference Interface)
+Key objectives:
+
+- Detect fraudulent transactions with high precision and recall
+- Handle highly imbalanced datasets effectively
+- Generate meaningful domain-driven features
+- Evaluate multiple machine learning models
+- Deploy the final model using Streamlit
+
+---
+
+## 🏗️ Project Architecture
+
+```text
+Raw Dataset
+     │
+     ▼
+Data Preprocessing
+     │
+     ▼
+Feature Engineering
+     │
+     ▼
+Model Training
+     │
+     ▼
+Model Evaluation
+     │
+     ▼
+Hyperparameter Tuning
+     │
+     ▼
+Saved Model (.pkl)
+     │
+     ▼
+Streamlit Web Application
+```
 
 ---
 
 ## 📂 Repository Structure
 
-The project layout follows production-grade modular design patterns, cleanly separating source code, data layers, generated artifacts, and visualization reports.
-
+```text
 FRAUD_DETECTION_PROJECT/
 │
 ├── data/
-│   ├── processed/                     # Formatted, scaled, and split matrices
-│   └── credit_card_fraud_10k.csv      # Raw baseline transaction dataset
+│   ├── processed/
+│   └── credit_card_fraud_10k.csv
 │
-├── logs/                              # Production & pipeline execution runtime logs
+├── logs/
 │   ├── evaluate_model.log
 │   ├── fix_leakage.log
 │   ├── train_model.log
 │   └── tune_model.log
 │
-├── models/                            # Serialized model objects and pipeline states (.pkl / .json)
-│   ├── best_model_fixed.pkl           # Leakage-corrected production model
-│   ├── best_model.pkl                 # Initial baseline model
-│   ├── fe_metadata.pkl                # Metadata mapping for feature engineering
-│   ├── fe_preprocessor.pkl            # Feature engineering preprocessor state
-│   ├── preprocessor.pkl               # Standard data cleaning/imputation pipeline state
-│   ├── training_metadata_fixed.json   # Corrected pipeline training execution logs
-│   ├── training_metadata.json         # Baseline training execution logs
-│   ├── training_metadata.pkl          # Serialized training metadata metrics
-│   └── tuned_model.pkl                # Optimally hyperparameter-tuned artifact
+├── models/
+│   ├── best_model.pkl
+│   ├── best_model_fixed.pkl
+│   ├── tuned_model.pkl
+│   ├── preprocessor.pkl
+│   ├── fe_preprocessor.pkl
+│   ├── fe_metadata.pkl
+│   ├── training_metadata.json
+│   ├── training_metadata_fixed.json
+│   └── training_metadata.pkl
 │
 ├── notebooks/
-│   └── eda_analysis.ipynb             # Exploratory Data Analysis & statistical checking
+│   └── eda_analysis.ipynb
 │
-├── reports/                           # Performance readouts and analytical metrics
-│   ├── eda_figures/                   # Visual plots from exploratory data analysis
-│   ├── figures/                       # Automatically generated evaluation plots
-│   ├── leakage_audit/                 # Reports tracking data leakage metrics
-│   ├── leakage_fix/                   # Documentation on validation leakage corrections
-│   ├── classification_report.txt      # Text-based breakdown of precision/recall metrics
-│   ├── evaluation_metrics.json        # Structured key-value performance indicators
-│   ├── model_comparison.csv           # Performance matrix across different model types
-│   ├── tuning_results.csv             # Raw parameter optimization iteration tables
-│   └── tuning_summary.json            # Final overview of best hyperparameter spaces
+├── reports/
+│   ├── eda_figures/
+│   ├── figures/
+│   │   ├── confusion_matrix.png
+│   │   ├── roc_curve.png
+│   │   ├── precision_recall_curve.png
+│   │   └── feature_importance.png
+│   ├── leakage_audit/
+│   ├── leakage_fix/
+│   ├── classification_report.txt
+│   ├── evaluation_metrics.json
+│   ├── model_comparison.csv
+│   ├── tuning_results.csv
+│   └── tuning_summary.json
 │
-├── src/                               # Modular processing codebase
-│   ├── __pycache__/                   # Compiled Python runtime bytecode
-│   ├── _init_.py                     # Package initialization marker
-│   ├── audit_leakage.py               # Diagnostics script to detect validation data leakage
-│   ├── debug_leak_check.py            # Troubleshooting module for target/feature cross-contamination
-│   ├── evaluate_model.py              # Performance visualization and reporting
-│   ├── feature_engineering.py         # Domain-driven feature engineering extraction
-│   ├── fix_leakage.py                 # Routine to enforce absolute isolation between train/test splits
-│   ├── predict.py                     # Batch/Independent sample inference script
-│   ├── preprocessing.py               # Raw clean-up, scaling, and formatting logic
-│   ├── saved_model.txt                # Tracking file for latest deployment-ready artifact versions
-│   ├── train_model.py                 # Core model training execution pipeline
-│   └── tune_model.py                  # Hyperparameter optimization sweeps
+├── src/
+│   ├── __init__.py
+│   ├── audit_leakage.py
+│   ├── debug_leak_check.py
+│   ├── evaluate_model.py
+│   ├── feature_engineering.py
+│   ├── fix_leakage.py
+│   ├── predict.py
+│   ├── preprocessing.py
+│   ├── train_model.py
+│   ├── tune_model.py
+│   └── saved_model.txt
 │
-├── venv/                              # Isolated Python local virtual environment
-├── app.py                             # Streamlit web UI production application entry-point
-├── README.md                          # Systematic project manual
-└── requirements.txt                   # Tracked third-party library dependencies
+├── app.py
+├── requirements.txt
+├── README.md
+└── venv/
+```
 
 ---
 
-## 🔧 Core Stack & Technical Specifications
+## 🔧 Technologies Used
 
-### Development Environment
+### Programming Language
 
-* **Language:** Python 3.13
-* **Deployment:** Streamlit Engine
+- Python 3.13
 
-### Core Engineering Libraries
+### Data Analysis
 
-* **Data Processing & Analytics:** Pandas, NumPy
-* **Machine Learning Engine:** Scikit-Learn
-* **Visual Diagnostics:** Matplotlib, Seaborn
-* **Model Serialization:** Joblib
+- Pandas
+- NumPy
 
-### Modeled Estimators
+### Machine Learning
 
-* Random Forest Classifier *(Selected Baseline)*
-* Logistic Regression
-* Decision Tree Classifier
+- Scikit-Learn
 
----
+### Visualization
 
-## ⚙️ Engineered Features Domain Map
+- Matplotlib
+- Seaborn
 
-To maximize model sensitivity to fraudulent behavior, the following behavioral, temporal, and risk-stratified features were generated:
+### Deployment
 
-| Feature Name | Type | Technical Description |
-| --- | --- | --- |
-| `amount` | Numeric | Base value of the transaction |
-| `transaction_hour` | Numeric | 24-hour timestamp indicator |
-| `device_trust_score` | Numeric | Trust matrix metric calculated per device ID |
-| `velocity_last_24h` | Numeric | Transaction frequency volume within a rolling 24-hour span |
-| `cardholder_age` | Numeric | Account owner age profile |
-| `amount_velocity_ratio` | Numeric | Compares financial volume spike against usage velocity |
-| `foreign_transaction` | Boolean | Binary flag indicating out-of-country origin |
-| `location_mismatch` | Boolean | Flags distance conflict between user profile and checkout terminal |
-| `is_night_transaction` | Boolean | Flags high-risk off-hour windows (12 AM - 5 AM) |
-| `is_high_amount` | Boolean | Threshold marker for statistical transaction outliers |
-| `is_high_velocity` | Boolean | Flags excessive frequency anomalies |
-| `is_low_device_trust` | Boolean | Flags hardware profiles categorized under insecure configurations |
-| `is_foreign_mismatch` | Boolean | Evaluates compounding risk (foreign country + location mismatch) |
-| `merchant_category_*` | Categorical | One-Hot encoded representations of target vendor sectors |
+- Streamlit
+
+### Model Persistence
+
+- Pickle
+- Joblib
 
 ---
 
-## 📊 Performance Benchmarks & Evaluation
+## ⚙️ Feature Engineering
 
-### Validation Breakdown
+The following features were used to improve fraud detection performance:
 
-* **Evaluation Split:** 80% Training / 20% Testing Validation sets
-* **Total Evaluation Volume:** 2,000 Transactions *(1,970 Legitimate / 30 Fraudulent)*
+| Feature | Description |
+|----------|-------------|
+| amount | Transaction amount |
+| transaction_hour | Hour of transaction |
+| device_trust_score | Device reliability score |
+| velocity_last_24h | Number of recent transactions |
+| cardholder_age | Customer age |
+| amount_velocity_ratio | Amount compared to transaction velocity |
+| foreign_transaction | Transaction occurred abroad |
+| location_mismatch | User location differs from expected location |
+| is_night_transaction | Transaction performed during night hours |
+| is_high_amount | High-value transaction flag |
+| is_high_velocity | Excessive transaction frequency flag |
+| is_low_device_trust | Low device trust score flag |
+| is_foreign_mismatch | Foreign transaction with location mismatch |
+| merchant_category_* | One-hot encoded merchant categories |
 
-The **Random Forest Classifier** outperformed all other structural variants, demonstrating elite capabilities in handling minority class variance.
+---
 
-### Global Metric Indicators
+## 🤖 Models Evaluated
 
-| Target Metric | Achieved Value |
-| --- | --- |
-| **Accuracy** | 99.75% |
-| **Precision** | 99.74% |
-| **Recall** | 99.75% |
-| **F1-Score** | 99.74% |
-| **ROC-AUC** | 99.99% |
-| **Average Precision (AP)** | 99.06% |
+The following machine learning models were trained and compared:
 
-## 🛡️ Rigorous Data Leakage Audit & Pipeline Isolation
+- Logistic Regression
+- Decision Tree Classifier
+- Random Forest Classifier
 
-In real-world fraud detection systems, data leakage is a critical risk that leads to over-optimistic validation metrics but failing production performance. During this project's lifecycle, a strict audit was executed using `src/audit_leakage.py` and resolved via `src/fix_leakage.py`.
+### Best Performing Model
 
-### 🚨 Identified Vulnerabilities & Resolutions
-* **Temporal Velocity Leakage:** Feature statistics like `velocity_last_24h` were initially calculated across the entire dataset globally before splitting. This leaked future transaction frequencies into past data points.
-  * *Fix:* Rewrote the aggregation logic to compute rolling histories strictly partitioned within training folds.
-* **Information Contamination via Feature Scaling:** Standardizing data matrices using global means and standard deviations leaks metadata from the testing validation set into the model's training phase.
-  * *Fix:* Bound all preprocessing transformations within an explicit `sklearn.pipeline.Pipeline` instance, calling `.fit_transform()` exclusively on the training matrix and applying `.transform()` seamlessly to unseen transaction features.
+**Random Forest Classifier**
 
-As a result, the production artifacts (`best_model_fixed.pkl` and `training_metadata_fixed.json`) reflect an authentic, zero-leakage enterprise deployment profile.
+Selected based on overall fraud detection performance and robustness on imbalanced data.
 
-## Application Demo
+---
+
+## 📊 Model Performance
+
+### Test Dataset
+
+- Total Transactions: 2,000
+- Legitimate Transactions: 1,970
+- Fraudulent Transactions: 30
+
+### Overall Metrics
+
+| Metric | Score |
+|----------|----------|
+| Accuracy | 99.75% |
+| Precision | 99.74% |
+| Recall | 99.75% |
+| F1 Score | 99.74% |
+| ROC-AUC | 99.99% |
+| Average Precision | 99.06% |
+
+### Fraud Class Performance
+
+| Metric | Score |
+|----------|----------|
+| Precision | 96.30% |
+| Recall | 86.67% |
+| F1 Score | 91.23% |
+
+The model successfully identifies fraudulent transactions while maintaining a very low false-positive rate.
+
+---
+
+## 📈 Evaluation Outputs
+
+The evaluation pipeline automatically generates:
+
+- Confusion Matrix
+- ROC Curve
+- Precision-Recall Curve
+- Feature Importance Plot
+- Classification Report
+- Evaluation Metrics JSON
+
+Generated files are stored in:
+
+```text
+reports/
+├── figures/
+├── classification_report.txt
+└── evaluation_metrics.json
+```
+
+---
+
+## 🛡️ Data Leakage Prevention
+
+To ensure realistic model performance, a dedicated leakage detection and correction pipeline was implemented.
+
+Key measures:
+
+- Strict train-test separation
+- Independent preprocessing on training data only
+- Proper feature engineering workflow
+- Leakage auditing scripts
+- Validation of feature generation logic
+
+Files involved:
+
+```text
+src/audit_leakage.py
+src/fix_leakage.py
+src/debug_leak_check.py
+```
+
+---
+
+## 📸 Application Demo
 
 ### Fraud Prediction
 
-![Fraud](assets/fraud_prediction.png)
+![Fraud Prediction](assets/fraud_prediction.png)
 
-### Legitimate Prediction
+### Legitimate Transaction Prediction
 
-![Legitimate](assets/legit_prediction.png)
+![Legitimate Prediction](assets/legit_prediction.png)
 
+---
 
-## Model Performance
+## 📊 Visual Results
 
 ### Confusion Matrix
 
@@ -197,124 +285,135 @@ As a result, the production artifacts (`best_model_fixed.pkl` and `training_meta
 
 ![Feature Importance](reports/figures/feature_importance.png)
 
-
-### Detailed Class Segmentation
-
-
-======================================================================
-CLASS: LEGITIMATE TRANSACTIONS
-----------------------------------------------------------------------
-Precision: 0.997973 | Recall: 0.999492 | F1-Score: 0.998732
-
-======================================================================
-CLASS: FRAUDULENT TRANSACTIONS (Minority Class)
-----------------------------------------------------------------------
-Precision: 0.962963 | Recall: 0.866667 | F1-Score: 0.912281
-======================================================================
-
-
-
-> 💡 **Analytical Insight:** In highly imbalanced contexts like fraud detection, traditional accuracy is misleading. The model secures a **96.3% Precision** and an **86.7% Recall** on the minority fraud class, striking an optimal operational balance to catch fraud while maintaining low customer friction (false positives).
-
 ---
 
-## 🚀 Environment Setup & Installation
+## 🚀 Installation
 
-### 1. Repository Acquisition
+### Clone Repository
 
+```bash
+git clone https://github.com/siva-1905/Fraud-detection-project.git
 
-git clone https://github.com/your-username/fraud_detection_project.git
-cd fraud_detection_project
+cd Fraud-detection-project
+```
 
+### Create Virtual Environment
 
-### 2. Isolated Environment Construction
-
-# Initialize Python Virtual Environment
+```bash
 python -m venv venv
+```
 
-# Activation: Windows Shell
+### Activate Virtual Environment
+
+Windows:
+
+```bash
 venv\Scripts\activate
+```
 
-# Activation: macOS / Linux Terminal
+Linux / macOS:
+
+```bash
 source venv/bin/activate
+```
 
+### Install Dependencies
 
-### 3. Dependency Provisioning
-
-pip install --upgrade pip
+```bash
 pip install -r requirements.txt
-
+```
 
 ---
 
-## 🏃 Execution Manual (Pipeline Orchestration)
+## ▶️ Running the Project
 
-Every phase of the pipeline can be individually executed or scheduled using modular scripts:
+### Data Preprocessing
 
-# 1. Cleanse and process raw input data matrices
+```bash
 python src/preprocessing.py
+```
 
-# 2. Extract domain-specific predictive heuristics 
+### Feature Engineering
+
+```bash
 python src/feature_engineering.py
+```
 
-# 3. Train core estimators and identify top configurations
+### Model Training
+
+```bash
 python src/train_model.py
+```
 
-# 4. Generate visual metrics (Confusion Matrix, ROC/PR Curves)
+### Model Evaluation
+
+```bash
 python src/evaluate_model.py
+```
 
-# 5. Fine-tune hyperparameter spaces for top efficiency
+### Hyperparameter Tuning
+
+```bash
 python src/tune_model.py
+```
 
 ---
 
-## 🌐 Serving the Live Interactive Dashboard
+## 🌐 Running the Streamlit Application
 
-The system features an intuitive user interface powered by Streamlit for instant ad-hoc assessments:
-
+```bash
 streamlit run app.py
+```
 
+Open your browser and visit:
 
-Once initialized, navigate your local browser to the web terminal:
-
+```text
 http://localhost:8501
+```
+
+The application allows users to:
+
+- Enter transaction details
+- Generate fraud predictions
+- View fraud probability scores
+- Perform real-time transaction analysis
 
 ---
 
-## 🛡️ Risk Assessment Engine Logic
+## 🔮 Future Improvements
 
-The model flag heuristic evaluates multi-tiered vectors. Risks compound and trigger fraud flags exponentially under conditions like:
-
-* Extreme spikes in transaction values contrasted against baseline behavior.
-* Mismatched tracking metrics (e.g., local home address vs. cross-border terminal pings).
-* Highly suspect transactional velocity bounds from hardware profiles scoring poorly on security layers.
-
----
-
-## 🔮 Strategic Enhancements Roadmap
-
-* [ ] Transition baseline classifiers into gradient boosted frameworks (**XGBoost** and **LightGBM**).
-* [ ] Implement asynchronous prediction streaming endpoints via a RESTful **FastAPI** structure.
-* [ ] Containerize application infrastructure using **Docker** to facilitate seamless microservices management.
-* [ ] Orchestrate automated continuous cloud deployment configurations (**AWS ECS / Azure App Services**).
-* [ ] Integrate **SHAP (SHapley Additive exPlanations)** to establish highly interpretable and transparent ML decisions.
-* [ ] Design automated data-drift monitors for trigger-driven programmatic pipeline retraining.
+- Implement XGBoost and LightGBM
+- Add SHAP explainability visualizations
+- Deploy using Docker
+- Create REST APIs using FastAPI
+- Add real-time streaming predictions
+- Implement automated model retraining
+- Add cloud deployment support (AWS/Azure)
 
 ---
 
-## 👩‍💻 Professional Profile
+## 👩‍💻 Author
 
-**Siva Priya A** *Bachelor of Engineering — Computer Science and Engineering*
+### Siva Priya A
 
-**Core Technical Proficiencies & Focus Areas:**
+Bachelor of Engineering – Computer Science and Engineering
 
-* Artificial Intelligence & Predictive Modeling
-* Enterprise Data Analytics Pipeline Engineering
-* Full Stack Web Applications (MERN Ecosystem)
-* Scalable Software Architecture
+Areas of Interest:
+
+- Artificial Intelligence
+- Machine Learning
+- Data Analytics
+- Full Stack Development
+- Software Engineering
+
+GitHub:
+
+https://github.com/siva-1905
 
 ---
 
-## 📜 Licensing
+## 📜 License
 
-Distributed under the terms of the **MIT License**. See the project files for full terms and conditions regarding institutional use.
+This project is licensed under the MIT License.
+
+Feel free to use, modify, and distribute this project for educational and research purposes.
