@@ -1,0 +1,4 @@
+amount,transaction_hour,device_trust_score,velocity_last_24h,cardholder_age,amount_velocity_ratio,foreign_transaction,location_mismatch,is_night_transaction,is_high_amount,is_high_velocity,is_low_device_trust,is_foreign_mismatch
+25.50,14,0.95,2,34,12.75,0,0,0,0,0,0,0
+2500.00,2,0.12,1,45,2500.00,1,1,1,1,0,1,1
+85.00,18,0.88,14,29,6.07,0,0,0,0,1,0,0

@@ -1,0 +1,249 @@
+2026-06-23 21:45:41 | INFO     | Validating required Phase 5 artifacts …
+2026-06-23 21:45:41 | INFO     | ============================================================
+2026-06-23 21:45:41 | INFO     | PHASE 6 — Model Training Pipeline
+2026-06-23 21:45:41 | INFO     | ============================================================
+2026-06-23 21:45:41 | INFO     | Loading processed datasets from: C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\data\processed
+2026-06-23 21:45:41 | INFO     | Validating dataset shapes …
+2026-06-23 21:45:41 | INFO     | Class distribution — train: {0: np.int64(7879), 1: np.int64(121)} | test: {0: np.int64(1970), 1: np.int64(30)}
+2026-06-23 21:45:41 | INFO     | ------------------------------------------------------------
+2026-06-23 21:45:41 | INFO     | Applying SMOTE to training data …
+2026-06-23 21:45:41 | INFO     |   Before — shape: (8000, 18) | class dist: {0: np.int64(7879), 1: np.int64(121)}
+2026-06-23 21:45:46 | INFO     |   After  — shape: (15758, 18) | class dist: {0: np.int64(7879), 1: np.int64(7879)}
+2026-06-23 21:45:46 | INFO     | ------------------------------------------------------------
+2026-06-23 21:45:46 | INFO     | Models to train: ['Logistic Regression', 'Decision Tree', 'Random Forest', 'XGBoost', 'SVM']
+2026-06-23 21:45:46 | INFO     | ------------------------------------------------------------
+2026-06-23 21:45:46 | INFO     | Running Stratified 5-Fold Cross-Validation …
+2026-06-23 21:45:46 | INFO     |   Training: Logistic Regression    …
+2026-06-23 21:45:49 | INFO     |     acc=0.9937  prec=0.9938  rec=0.9937  f1=0.9937  auc=nan  [3.2s]
+2026-06-23 21:45:49 | INFO     |   Training: Decision Tree          …
+2026-06-23 21:45:52 | INFO     |     acc=0.9975  prec=0.9975  rec=0.9975  f1=0.9975  auc=nan  [2.5s]
+2026-06-23 21:45:52 | INFO     |   Training: Random Forest          …
+2026-06-23 21:45:54 | INFO     |     acc=0.9994  prec=0.9994  rec=0.9994  f1=0.9994  auc=nan  [2.3s]
+2026-06-23 21:45:54 | INFO     |   Training: XGBoost                …
+2026-06-23 21:45:54 | INFO     |     acc=0.9992  prec=0.9992  rec=0.9992  f1=0.9992  auc=nan  [0.6s]
+2026-06-23 21:45:54 | INFO     |   Training: SVM                    …
+2026-06-23 21:45:57 | INFO     |     acc=0.9970  prec=0.9970  rec=0.9970  f1=0.9970  auc=nan  [2.2s]
+2026-06-23 21:45:57 | INFO     | ------------------------------------------------------------
+2026-06-23 21:45:57 | ERROR    | Unexpected error during training: Encountered all NA values
+Traceback (most recent call last):
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\src\train_model.py", line 468, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\src\train_model.py", line 403, in main
+    best_name, best_model = select_and_fit_best(
+                            ~~~~~~~~~~~~~~~~~~~^
+        comparison_df=comparison_df,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        y_train=y_train_res,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\src\train_model.py", line 299, in select_and_fit_best
+    best_name = comparison_df[selection_metric].idxmax()
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\venv\Lib\site-packages\pandas\core\series.py", line 2545, in idxmax
+    iloc = self.argmax(axis, skipna, *args, **kwargs)
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\venv\Lib\site-packages\pandas\core\base.py", line 814, in argmax
+    result = nanops.nanargmax(delegate, skipna=skipna)
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\venv\Lib\site-packages\pandas\core\nanops.py", line 1170, in nanargmax
+    result = _maybe_arg_null_out(result, axis, mask, skipna)  # type: ignore[arg-type]
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\venv\Lib\site-packages\pandas\core\nanops.py", line 1485, in _maybe_arg_null_out
+    raise ValueError("Encountered all NA values")
+ValueError: Encountered all NA values
+2026-06-23 22:03:01 | INFO     | Validating required Phase 5 artifacts …
+2026-06-23 22:03:01 | INFO     | ============================================================
+2026-06-23 22:03:01 | INFO     | PHASE 6 — Model Training Pipeline
+2026-06-23 22:03:01 | INFO     | ============================================================
+2026-06-23 22:03:01 | INFO     | Loading processed datasets from: C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\data\processed
+2026-06-23 22:03:01 | INFO     | Validating dataset shapes …
+2026-06-23 22:03:01 | INFO     | Class distribution — train: {0: np.int64(7879), 1: np.int64(121)} | test: {0: np.int64(1970), 1: np.int64(30)}
+2026-06-23 22:03:01 | INFO     | ------------------------------------------------------------
+2026-06-23 22:03:01 | INFO     | Applying SMOTE to training data …
+2026-06-23 22:03:01 | INFO     |   Before — shape: (8000, 18) | class dist: {0: np.int64(7879), 1: np.int64(121)}
+2026-06-23 22:03:04 | INFO     |   After  — shape: (15758, 18) | class dist: {0: np.int64(7879), 1: np.int64(7879)}
+2026-06-23 22:03:04 | INFO     | ------------------------------------------------------------
+2026-06-23 22:03:04 | INFO     | Models to train: ['Logistic Regression', 'Decision Tree', 'Random Forest', 'XGBoost', 'SVM']
+2026-06-23 22:03:04 | INFO     | ------------------------------------------------------------
+2026-06-23 22:03:04 | INFO     | Running Stratified 5-Fold Cross-Validation …
+2026-06-23 22:03:04 | INFO     |   Training: Logistic Regression    …
+2026-06-23 22:03:08 | INFO     |     acc=0.9937  prec=0.9938  rec=0.9937  f1=0.9937  auc=0.9984  [4.0s]
+2026-06-23 22:03:08 | INFO     |   Training: Decision Tree          …
+2026-06-23 22:03:11 | INFO     |     acc=0.9975  prec=0.9975  rec=0.9975  f1=0.9975  auc=0.9975  [2.7s]
+2026-06-23 22:03:11 | INFO     |   Training: Random Forest          …
+2026-06-23 22:03:13 | INFO     |     acc=0.9994  prec=0.9994  rec=0.9994  f1=0.9994  auc=1.0000  [2.4s]
+2026-06-23 22:03:13 | INFO     |   Training: XGBoost                …
+2026-06-23 22:03:14 | INFO     |     acc=0.9992  prec=0.9992  rec=0.9992  f1=0.9992  auc=1.0000  [0.7s]
+2026-06-23 22:03:14 | INFO     |   Training: SVM                    …
+2026-06-23 22:03:17 | INFO     |     acc=0.9970  prec=0.9970  rec=0.9970  f1=0.9970  auc=0.9997  [3.2s]
+2026-06-23 22:03:17 | INFO     | ------------------------------------------------------------
+2026-06-23 22:03:17 | INFO     | Best model by roc_auc_mean: 'Random Forest'  (1.0000)
+2026-06-23 22:03:17 | INFO     | Refitting 'Random Forest' on full training set …
+2026-06-23 22:03:18 | INFO     | ------------------------------------------------------------
+2026-06-23 22:03:18 | INFO     | Evaluating best model on held-out test set …
+2026-06-23 22:03:18 | INFO     |   Test-set metrics: {'accuracy': 0.9995, 'precision': 0.9995, 'recall': 0.9995, 'f1': 0.9995, 'roc_auc': 1.0}
+2026-06-23 22:03:18 | INFO     | ============================================================
+2026-06-23 22:03:18 | INFO     | MODEL COMPARISON SUMMARY
+2026-06-23 22:03:18 | INFO     | ============================================================
+2026-06-23 22:03:18 | INFO     | 
+                     accuracy_mean  precision_mean  recall_mean  f1_mean  roc_auc_mean
+Model                                                                                 
+Logistic Regression         0.9937          0.9938       0.9937   0.9937        0.9984
+Decision Tree               0.9975          0.9975       0.9975   0.9975        0.9975
+Random Forest               0.9994          0.9994       0.9994   0.9994        1.0000
+XGBoost                     0.9992          0.9992       0.9992   0.9992        1.0000
+SVM                         0.9970          0.9970       0.9970   0.9970        0.9997
+2026-06-23 22:03:18 | INFO     | ============================================================
+2026-06-23 22:03:18 | INFO     | Selected best model: Random Forest
+2026-06-23 22:03:18 | INFO     | ============================================================
+2026-06-23 22:03:18 | INFO     | Phase 6 complete in 17.1 seconds.
+2026-06-23 22:13:20 | INFO     | Validating required Phase 5 artifacts …
+2026-06-23 22:13:20 | INFO     | ============================================================
+2026-06-23 22:13:20 | INFO     | PHASE 6 — Model Training Pipeline
+2026-06-23 22:13:20 | INFO     | ============================================================
+2026-06-23 22:13:20 | INFO     | Loading processed datasets from: C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\data\processed
+2026-06-23 22:13:20 | INFO     | Validating dataset shapes …
+2026-06-23 22:13:20 | INFO     | Class distribution — train: {0: np.int64(7879), 1: np.int64(121)} | test: {0: np.int64(1970), 1: np.int64(30)}
+2026-06-23 22:13:20 | INFO     | ------------------------------------------------------------
+2026-06-23 22:13:20 | INFO     | Applying SMOTE to training data …
+2026-06-23 22:13:20 | INFO     |   Before — shape: (8000, 18) | class dist: {0: np.int64(7879), 1: np.int64(121)}
+2026-06-23 22:13:23 | INFO     |   After  — shape: (15758, 18) | class dist: {0: np.int64(7879), 1: np.int64(7879)}
+2026-06-23 22:13:23 | INFO     | ------------------------------------------------------------
+2026-06-23 22:13:23 | INFO     | Models to train: ['Logistic Regression', 'Decision Tree', 'Random Forest', 'XGBoost', 'SVM']
+2026-06-23 22:13:23 | INFO     | ------------------------------------------------------------
+2026-06-23 22:13:23 | INFO     | Running Stratified 5-Fold Cross-Validation …
+2026-06-23 22:13:23 | INFO     |   Training: Logistic Regression    …
+2026-06-23 22:13:26 | INFO     |     acc=0.9937  prec=0.9938  rec=0.9937  f1=0.9937  auc=0.9984  [3.1s]
+2026-06-23 22:13:26 | INFO     |   Training: Decision Tree          …
+2026-06-23 22:13:28 | INFO     |     acc=0.9975  prec=0.9975  rec=0.9975  f1=0.9975  auc=0.9975  [2.3s]
+2026-06-23 22:13:28 | INFO     |   Training: Random Forest          …
+2026-06-23 22:13:30 | INFO     |     acc=0.9994  prec=0.9994  rec=0.9994  f1=0.9994  auc=1.0000  [2.1s]
+2026-06-23 22:13:30 | INFO     |   Training: XGBoost                …
+2026-06-23 22:13:31 | INFO     |     acc=0.9992  prec=0.9992  rec=0.9992  f1=0.9992  auc=1.0000  [0.5s]
+2026-06-23 22:13:31 | INFO     |   Training: SVM                    …
+2026-06-23 22:13:33 | INFO     |     acc=0.9970  prec=0.9970  rec=0.9970  f1=0.9970  auc=0.9997  [2.4s]
+2026-06-23 22:13:33 | INFO     | ------------------------------------------------------------
+2026-06-23 22:13:33 | INFO     | Best model by roc_auc_mean: 'Random Forest'  (1.0000)
+2026-06-23 22:13:33 | INFO     | Refitting 'Random Forest' on full training set …
+2026-06-23 22:13:34 | INFO     | ------------------------------------------------------------
+2026-06-23 22:13:34 | INFO     | Evaluating best model on held-out test set …
+2026-06-23 22:13:34 | INFO     |   Test-set metrics: {'accuracy': 0.9995, 'precision': 0.9995, 'recall': 0.9995, 'f1': 0.9995, 'roc_auc': 1.0}
+2026-06-23 22:13:34 | INFO     | ============================================================
+2026-06-23 22:13:34 | INFO     | MODEL COMPARISON SUMMARY
+2026-06-23 22:13:34 | INFO     | ============================================================
+2026-06-23 22:13:34 | INFO     | 
+                     accuracy_mean  precision_mean  recall_mean  f1_mean  roc_auc_mean
+Model                                                                                 
+Logistic Regression         0.9937          0.9938       0.9937   0.9937        0.9984
+Decision Tree               0.9975          0.9975       0.9975   0.9975        0.9975
+Random Forest               0.9994          0.9994       0.9994   0.9994        1.0000
+XGBoost                     0.9992          0.9992       0.9992   0.9992        1.0000
+SVM                         0.9970          0.9970       0.9970   0.9970        0.9997
+2026-06-23 22:13:34 | INFO     | ============================================================
+2026-06-23 22:13:34 | INFO     | Selected best model: Random Forest
+2026-06-23 22:13:34 | INFO     | ============================================================
+2026-06-23 22:13:34 | INFO     | Phase 6 complete in 13.8 seconds.
+2026-06-23 22:14:54 | INFO     | Validating required Phase 5 artifacts …
+2026-06-23 22:14:54 | INFO     |   [OK] All 6 artifacts present.
+2026-06-23 22:14:54 | INFO     | ============================================================
+2026-06-23 22:14:54 | INFO     | PHASE 6 — Model Training Pipeline
+2026-06-23 22:14:54 | INFO     | ============================================================
+2026-06-23 22:14:54 | INFO     | Loading processed datasets from: C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\data\processed
+2026-06-23 22:14:54 | INFO     | Validating dataset shapes …
+2026-06-23 22:14:54 | INFO     |   [OK] X_train=(8000, 18)  X_test=(2000, 18)  y_train=(8000,)  y_test=(2000,)
+2026-06-23 22:14:54 | INFO     | Class distribution — train: {0: np.int64(7879), 1: np.int64(121)} | test: {0: np.int64(1970), 1: np.int64(30)}
+2026-06-23 22:14:54 | INFO     | ------------------------------------------------------------
+2026-06-23 22:14:54 | INFO     | Applying SMOTE to training data …
+2026-06-23 22:14:54 | INFO     |   Before — shape: (8000, 18) | class dist: {0: np.int64(7879), 1: np.int64(121)}
+2026-06-23 22:14:56 | INFO     |   [OK] After  — shape: (15758, 18) | class dist: {0: np.int64(7879), 1: np.int64(7879)}
+2026-06-23 22:14:56 | INFO     | ------------------------------------------------------------
+2026-06-23 22:14:56 | INFO     | Models to train: ['Logistic Regression', 'Decision Tree', 'Random Forest', 'XGBoost', 'SVM']
+2026-06-23 22:14:56 | INFO     | ------------------------------------------------------------
+2026-06-23 22:14:56 | INFO     | Running Stratified 5-Fold Cross-Validation …
+2026-06-23 22:14:56 | INFO     |   Training: Logistic Regression    …
+2026-06-23 22:14:59 | INFO     |     acc=0.9937  prec=0.9938  rec=0.9937  f1=0.9937  auc=0.9984  [3.0s]
+2026-06-23 22:14:59 | INFO     |   Training: Decision Tree          …
+2026-06-23 22:15:01 | INFO     |     acc=0.9975  prec=0.9975  rec=0.9975  f1=0.9975  auc=0.9975  [2.2s]
+2026-06-23 22:15:01 | INFO     |   Training: Random Forest          …
+2026-06-23 22:15:04 | INFO     |     acc=0.9994  prec=0.9994  rec=0.9994  f1=0.9994  auc=1.0000  [2.3s]
+2026-06-23 22:15:04 | INFO     |   Training: XGBoost                …
+2026-06-23 22:15:04 | INFO     |     acc=0.9992  prec=0.9992  rec=0.9992  f1=0.9992  auc=1.0000  [0.5s]
+2026-06-23 22:15:04 | INFO     |   Training: SVM                    …
+2026-06-23 22:15:07 | INFO     |     acc=0.9970  prec=0.9970  rec=0.9970  f1=0.9970  auc=0.9997  [2.3s]
+2026-06-23 22:15:07 | INFO     | Model comparison saved -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\reports\model_comparison.csv
+2026-06-23 22:15:07 | INFO     | ------------------------------------------------------------
+2026-06-23 22:15:07 | INFO     | Best model by roc_auc_mean: 'Random Forest'  (1.0000)
+2026-06-23 22:15:07 | INFO     | Refitting 'Random Forest' on full training set …
+2026-06-23 22:15:07 | INFO     | ------------------------------------------------------------
+2026-06-23 22:15:07 | INFO     | Evaluating best model on held-out test set …
+2026-06-23 22:15:07 | INFO     |   Test-set metrics: {'accuracy': 0.9995, 'precision': 0.9995, 'recall': 0.9995, 'f1': 0.9995, 'roc_auc': 1.0}
+2026-06-23 22:15:07 | INFO     | Model saved -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\models\best_model.pkl  (2637.0 KB)
+2026-06-23 22:15:07 | INFO     | Training metadata saved -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\models\training_metadata.pkl (+ .json)
+2026-06-23 22:15:07 | INFO     | ============================================================
+2026-06-23 22:15:07 | INFO     | MODEL COMPARISON SUMMARY
+2026-06-23 22:15:07 | INFO     | ============================================================
+2026-06-23 22:15:07 | INFO     | 
+                     accuracy_mean  precision_mean  recall_mean  f1_mean  roc_auc_mean
+Model                                                                                 
+Logistic Regression         0.9937          0.9938       0.9937   0.9937        0.9984
+Decision Tree               0.9975          0.9975       0.9975   0.9975        0.9975
+Random Forest               0.9994          0.9994       0.9994   0.9994        1.0000
+XGBoost                     0.9992          0.9992       0.9992   0.9992        1.0000
+SVM                         0.9970          0.9970       0.9970   0.9970        0.9997
+2026-06-23 22:15:07 | INFO     | ============================================================
+2026-06-23 22:15:07 | INFO     | Selected best model: Random Forest
+2026-06-23 22:15:07 | INFO     | ============================================================
+2026-06-23 22:15:07 | INFO     | Phase 6 complete in 13.0 seconds.
+2026-06-23 22:15:07 | INFO     | Next step -> Phase 7: Hyperparameter Tuning / Model Evaluation
+2026-06-24 16:02:10 | INFO     | Validating required Phase 5 artifacts …
+2026-06-24 16:02:10 | INFO     |   [OK] All 6 artifacts present.
+2026-06-24 16:02:10 | INFO     | ============================================================
+2026-06-24 16:02:10 | INFO     | PHASE 6 — Model Training Pipeline
+2026-06-24 16:02:10 | INFO     | ============================================================
+2026-06-24 16:02:10 | INFO     | Loading processed datasets from: C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\data\processed
+2026-06-24 16:02:10 | INFO     | Validating dataset shapes …
+2026-06-24 16:02:10 | INFO     |   [OK] X_train=(8000, 17)  X_test=(2000, 17)  y_train=(8000,)  y_test=(2000,)
+2026-06-24 16:02:10 | INFO     | Class distribution — train: {0: np.int64(7879), 1: np.int64(121)} | test: {0: np.int64(1970), 1: np.int64(30)}
+2026-06-24 16:02:10 | INFO     | ------------------------------------------------------------
+2026-06-24 16:02:10 | INFO     | Applying SMOTE to training data …
+2026-06-24 16:02:10 | INFO     |   Before — shape: (8000, 17) | class dist: {0: np.int64(7879), 1: np.int64(121)}
+2026-06-24 16:02:12 | INFO     |   [OK] After  — shape: (15758, 17) | class dist: {0: np.int64(7879), 1: np.int64(7879)}
+2026-06-24 16:02:12 | INFO     | ------------------------------------------------------------
+2026-06-24 16:02:12 | INFO     | Models to train: ['Logistic Regression', 'Decision Tree', 'Random Forest', 'XGBoost', 'SVM']
+2026-06-24 16:02:12 | INFO     | ------------------------------------------------------------
+2026-06-24 16:02:12 | INFO     | Running Stratified 5-Fold Cross-Validation …
+2026-06-24 16:02:12 | INFO     |   Training: Logistic Regression    …
+2026-06-24 16:02:14 | INFO     |     acc=0.9930  prec=0.9931  rec=0.9930  f1=0.9930  auc=0.9984  [2.4s]
+2026-06-24 16:02:14 | INFO     |   Training: Decision Tree          …
+2026-06-24 16:02:16 | INFO     |     acc=0.9982  prec=0.9982  rec=0.9982  f1=0.9982  auc=0.9982  [1.6s]
+2026-06-24 16:02:16 | INFO     |   Training: Random Forest          …
+2026-06-24 16:02:18 | INFO     |     acc=0.9997  prec=0.9997  rec=0.9997  f1=0.9997  auc=1.0000  [1.9s]
+2026-06-24 16:02:18 | INFO     |   Training: XGBoost                …
+2026-06-24 16:02:19 | INFO     |     acc=0.9997  prec=0.9997  rec=0.9997  f1=0.9997  auc=1.0000  [0.6s]
+2026-06-24 16:02:19 | INFO     |   Training: SVM                    …
+2026-06-24 16:02:23 | INFO     |     acc=0.9968  prec=0.9968  rec=0.9968  f1=0.9968  auc=0.9997  [4.8s]
+2026-06-24 16:02:23 | INFO     | Model comparison saved -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\reports\model_comparison.csv
+2026-06-24 16:02:23 | INFO     | ------------------------------------------------------------
+2026-06-24 16:02:23 | INFO     | Best model by roc_auc_mean: 'Random Forest'  (1.0000)
+2026-06-24 16:02:23 | INFO     | Refitting 'Random Forest' on full training set …
+2026-06-24 16:02:24 | INFO     |   [OK] Refit complete.
+2026-06-24 16:02:24 | INFO     | ------------------------------------------------------------
+2026-06-24 16:02:24 | INFO     | Evaluating best model on held-out test set …
+2026-06-24 16:02:24 | INFO     |   Test-set metrics: {'accuracy': 0.9975, 'precision': 0.9974, 'recall': 0.9975, 'f1': 0.9974, 'roc_auc': 0.9999}
+2026-06-24 16:02:24 | INFO     | Model saved -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\models\best_model.pkl  (3676.7 KB)
+2026-06-24 16:02:24 | INFO     | Training metadata saved -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\models\training_metadata.pkl (+ .json)
+2026-06-24 16:02:24 | INFO     | ============================================================
+2026-06-24 16:02:24 | INFO     | MODEL COMPARISON SUMMARY
+2026-06-24 16:02:24 | INFO     | ============================================================
+2026-06-24 16:02:24 | INFO     | 
+                     accuracy_mean  precision_mean  recall_mean  f1_mean  roc_auc_mean
+Model                                                                                 
+Logistic Regression         0.9930          0.9931       0.9930   0.9930        0.9984
+Decision Tree               0.9982          0.9982       0.9982   0.9982        0.9982
+Random Forest               0.9997          0.9997       0.9997   0.9997        1.0000
+XGBoost                     0.9997          0.9997       0.9997   0.9997        1.0000
+SVM                         0.9968          0.9968       0.9968   0.9968        0.9997
+2026-06-24 16:02:24 | INFO     | ============================================================
+2026-06-24 16:02:24 | INFO     | Selected best model: Random Forest
+2026-06-24 16:02:24 | INFO     | ============================================================
+2026-06-24 16:02:24 | INFO     | Phase 6 complete in 14.1 seconds.
+2026-06-24 16:02:24 | INFO     | Next step -> Phase 7: Hyperparameter Tuning / Model Evaluation

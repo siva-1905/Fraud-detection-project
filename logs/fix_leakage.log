@@ -1,0 +1,152 @@
+2026-06-24 15:48:55 | INFO     | ============================================================
+2026-06-24 15:48:55 | INFO     | PHASE 7.6 — Leakage Fix: risk_score_raw
+2026-06-24 15:48:55 | INFO     | ============================================================
+2026-06-24 15:48:55 | INFO     | Loading processed datasets ...
+2026-06-24 15:48:55 | INFO     |   X_train=(8000, 18)  X_test=(2000, 18)  fraud_rate_train=0.0151  fraud_rate_test=0.0150
+2026-06-24 15:48:55 | INFO     | ============================================================
+2026-06-24 15:48:55 | INFO     | STEP 1 — Diagnosing risk_score_raw
+2026-06-24 15:48:55 | INFO     | ============================================================
+2026-06-24 15:48:55 | INFO     |   Q1. Single-feature AUC test ...
+2026-06-24 15:48:55 | INFO     |     risk_score_raw alone -> AUC = 0.9941
+2026-06-24 15:48:55 | INFO     |     FAIL: This feature alone is near-perfect — strong proxy for the label.
+2026-06-24 15:48:55 | INFO     |   Q2. Can other features reconstruct risk_score_raw?
+2026-06-24 15:48:56 | INFO     |     R2 of predicting risk_score_raw from other features: 1.0000
+2026-06-24 15:48:56 | INFO     |     FAIL: risk_score_raw is ~100% derivable from other columns.
+2026-06-24 15:48:56 | INFO     |   Q3. Model AUC without risk_score_raw ...
+2026-06-24 15:48:56 | INFO     |     AUC without risk_score_raw: 1.0000  (original: 1.0000)
+2026-06-24 15:48:56 | INFO     |   Q4. Class distribution analysis ...
+2026-06-24 15:48:56 | INFO     |     Fraud mean=3.000  Legit mean=-0.046  KS=0.8866  p=9.68e-112
+2026-06-24 15:48:57 | INFO     |   Plot -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\reports\leakage_fix\figures\step1_risk_score_distribution.png
+2026-06-24 15:48:57 | INFO     | ============================================================
+2026-06-24 15:48:57 | INFO     | Running all three fix strategies ...
+2026-06-24 15:48:57 | INFO     | ============================================================
+2026-06-24 15:48:57 | INFO     | ============================================================
+2026-06-24 15:48:57 | INFO     | STRATEGY A — Drop risk_score_raw entirely
+2026-06-24 15:48:57 | INFO     | ============================================================
+2026-06-24 15:48:57 | INFO     |   Remaining features: 17  |  Dropped: ['risk_score_raw']
+2026-06-24 15:48:57 | INFO     |   Training variant: Strategy A ...
+2026-06-24 15:49:05 | INFO     |     CV AUC=1.0000 +/-0.0000  |  Test AUC=0.9998  F1=0.9974  AP=0.9893
+2026-06-24 15:49:05 | INFO     | ============================================================
+2026-06-24 15:49:05 | INFO     | STRATEGY B — Enforce chronological split
+2026-06-24 15:49:05 | INFO     | ============================================================
+2026-06-24 15:49:05 | INFO     |   Sorted by column: 'transaction_hour'
+2026-06-24 15:49:05 | INFO     |   Temporal split -> train: 8000 (fraud=0.018)  test: 2000 (fraud=0.004)
+2026-06-24 15:49:05 | INFO     |   Training variant: Strategy B ...
+2026-06-24 15:49:12 | INFO     |     CV AUC=1.0000 +/-0.0000  |  Test AUC=1.0000  F1=0.9984  AP=1.0000
+2026-06-24 15:49:12 | INFO     | ============================================================
+2026-06-24 15:49:12 | INFO     | STRATEGY C — Rebuild clean risk score (no target leakage)
+2026-06-24 15:49:12 | INFO     | ============================================================
+2026-06-24 15:49:12 | INFO     |   Clean score correlation with target: |r| = 0.2885
+2026-06-24 15:49:12 | INFO     |   (risk_score_raw had |r| = 0.3717)
+2026-06-24 15:49:12 | INFO     |   Training variant: Strategy C ...
+2026-06-24 15:49:19 | INFO     |     CV AUC=1.0000 +/-0.0000  |  Test AUC=0.9996  F1=0.9974  AP=0.9771
+2026-06-24 15:49:19 | INFO     | Plotting strategy comparison ...
+2026-06-24 15:49:20 | INFO     |   Plot -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\reports\leakage_fix\figures\strategy_comparison.png
+2026-06-24 15:49:20 | INFO     | ============================================================
+2026-06-24 15:49:20 | INFO     | Best strategy: Strategy B (temporal)  (Test AUC=1.0000)
+2026-06-24 15:49:20 | INFO     | ============================================================
+2026-06-24 15:49:20 | INFO     | ============================================================
+2026-06-24 15:49:20 | INFO     | Saving fixed artifacts (Strategy: Strategy B (temporal)) ...
+2026-06-24 15:49:20 | INFO     | ============================================================
+2026-06-24 15:49:20 | INFO     |   Saved -> data/processed/X_train_fixed.csv
+2026-06-24 15:49:20 | INFO     |   Saved -> data/processed/X_test_fixed.csv
+2026-06-24 15:49:20 | INFO     |   Saved -> models/best_model_fixed.pkl
+2026-06-24 15:49:20 | INFO     |   Saved -> models/training_metadata_fixed.json
+2026-06-24 15:49:20 | INFO     | Diagnosis report -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\reports\leakage_fix\risk_score_diagnosis.txt
+2026-06-24 15:49:20 | INFO     | 
+=================================================================
+  FRAUD DETECTION — LEAKAGE FIX REPORT
+  Generated : 2026-06-24 15:49:20
+=================================================================
+
+ROOT CAUSE: risk_score_raw
+----------------------------------------
+  Single-feature AUC        : 0.9941
+  Reconstructibility R2     : 1.0
+  Reconstruction verdict    : CIRCULAR — derived from the same feature set
+  AUC without this feature  : 1.0
+  Fraud mean score          : 2.9998
+  Legit mean score          : -0.0461
+  KS statistic              : 0.8866
+
+STRATEGY RESULTS
+----------------------------------------
+
+  Strategy A (drop):
+    cv_auc_mean             : 1.0
+    cv_auc_std              : 0.0
+    test_accuracy           : 0.9975
+    test_precision          : 0.9974
+    test_recall             : 0.9975
+    test_f1                 : 0.9974
+    test_roc_auc            : 0.9998
+    test_avg_prec           : 0.9893
+
+  Strategy B (temporal):
+    cv_auc_mean             : 1.0
+    cv_auc_std              : 0.0
+    test_accuracy           : 0.9985
+    test_precision          : 0.9985
+    test_recall             : 0.9985
+    test_f1                 : 0.9984
+    test_roc_auc            : 1.0
+    test_avg_prec           : 1.0
+
+  Strategy C (rebuild):
+    cv_auc_mean             : 1.0
+    cv_auc_std              : 0.0
+    test_accuracy           : 0.9975
+    test_precision          : 0.9974
+    test_recall             : 0.9975
+    test_f1                 : 0.9974
+    test_roc_auc            : 0.9996
+    test_avg_prec           : 0.9771
+
+=================================================================
+  RECOMMENDED STRATEGY: Strategy B (temporal)
+=================================================================
+
+NEXT STEPS
+----------------------------------------
+  1. Check figures in reports/leakage_fix/figures/
+  2. Update feature_engineering.py to exclude risk_score_raw
+  3. Use data/processed/X_train_fixed.csv for Phase 8 tuning
+  4. Use models/best_model_fixed.pkl as Phase 8 baseline
+  5. Re-run: python src/audit_leakage.py to verify all FAILs resolved
+  6. Expected honest AUC range: 0.88 - 0.96 for real fraud detection
+
+2026-06-24 15:49:20 | INFO     | ============================================================
+2026-06-24 15:49:20 | INFO     | Phase 7.6 complete.
+2026-06-24 15:49:20 | INFO     |   Fixed datasets  -> data/processed/X_train_fixed.csv
+2026-06-24 15:49:20 | INFO     |   Fixed model     -> models/best_model_fixed.pkl
+2026-06-24 15:49:20 | INFO     |   Next: python src/audit_leakage.py  (verify PASS)
+2026-06-24 15:49:20 | INFO     |   Then: python src/phase8_tune_model.py
+2026-06-24 15:49:20 | INFO     | ============================================================
+2026-06-24 16:08:07 | INFO     | ============================================================
+2026-06-24 16:08:07 | INFO     | PHASE 7.6 — Leakage Fix: risk_score_raw
+2026-06-24 16:08:07 | INFO     | ============================================================
+2026-06-24 16:08:07 | INFO     | Loading processed datasets ...
+2026-06-24 16:08:07 | INFO     |   X_train=(8000, 17)  X_test=(2000, 17)  fraud_rate_train=0.0151  fraud_rate_test=0.0150
+2026-06-24 16:08:07 | INFO     | ============================================================
+2026-06-24 16:08:07 | INFO     | STEP 1 — Diagnosing risk_score_raw
+2026-06-24 16:08:07 | INFO     | ============================================================
+2026-06-24 16:08:07 | INFO     |   Q1. Single-feature AUC test ...
+2026-06-24 16:08:07 | ERROR    | Fix pipeline failed: "None of [Index(['risk_score_raw'], dtype='str')] are in the [columns]"
+Traceback (most recent call last):
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\src\fix_leakage.py", line 694, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\src\fix_leakage.py", line 610, in main
+    diagnosis = diagnose_risk_score(X_train, X_test, y_train, y_test)
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\src\fix_leakage.py", line 128, in diagnose_risk_score
+    rf_single.fit(X_train[[col]], y_train)
+                  ~~~~~~~^^^^^^^
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\venv\Lib\site-packages\pandas\core\frame.py", line 4384, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\venv\Lib\site-packages\pandas\core\indexes\base.py", line 6302, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\venv\Lib\site-packages\pandas\core\indexes\base.py", line 6352, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['risk_score_raw'], dtype='str')] are in the [columns]"

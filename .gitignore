@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environments
+venv/
+ENV/
+env/
+.env
+
+# OS-specific clutter
+.DS_Store
+Thumbs.db
+
+# Large raw datasets (Optional, if you want to keep data clean)
+data/processed/*.csv

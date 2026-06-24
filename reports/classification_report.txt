@@ -1,0 +1,14 @@
+============================================================
+  Fraud Detection — Classification Report
+  Model : RandomForestClassifier
+  Date  : 2026-06-24 16:16:30
+============================================================
+
+              precision    recall  f1-score   support
+
+  Legitimate   0.997973  0.999492  0.998732      1970
+       Fraud   0.962963  0.866667  0.912281        30
+
+    accuracy                       0.997500      2000
+   macro avg   0.980468  0.933080  0.955506      2000
+weighted avg   0.997447  0.997500  0.997435      2000

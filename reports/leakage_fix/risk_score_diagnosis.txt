@@ -1,0 +1,60 @@
+=================================================================
+  FRAUD DETECTION — LEAKAGE FIX REPORT
+  Generated : 2026-06-24 15:49:20
+=================================================================
+
+ROOT CAUSE: risk_score_raw
+----------------------------------------
+  Single-feature AUC        : 0.9941
+  Reconstructibility R2     : 1.0
+  Reconstruction verdict    : CIRCULAR — derived from the same feature set
+  AUC without this feature  : 1.0
+  Fraud mean score          : 2.9998
+  Legit mean score          : -0.0461
+  KS statistic              : 0.8866
+
+STRATEGY RESULTS
+----------------------------------------
+
+  Strategy A (drop):
+    cv_auc_mean             : 1.0
+    cv_auc_std              : 0.0
+    test_accuracy           : 0.9975
+    test_precision          : 0.9974
+    test_recall             : 0.9975
+    test_f1                 : 0.9974
+    test_roc_auc            : 0.9998
+    test_avg_prec           : 0.9893
+
+  Strategy B (temporal):
+    cv_auc_mean             : 1.0
+    cv_auc_std              : 0.0
+    test_accuracy           : 0.9985
+    test_precision          : 0.9985
+    test_recall             : 0.9985
+    test_f1                 : 0.9984
+    test_roc_auc            : 1.0
+    test_avg_prec           : 1.0
+
+  Strategy C (rebuild):
+    cv_auc_mean             : 1.0
+    cv_auc_std              : 0.0
+    test_accuracy           : 0.9975
+    test_precision          : 0.9974
+    test_recall             : 0.9975
+    test_f1                 : 0.9974
+    test_roc_auc            : 0.9996
+    test_avg_prec           : 0.9771
+
+=================================================================
+  RECOMMENDED STRATEGY: Strategy B (temporal)
+=================================================================
+
+NEXT STEPS
+----------------------------------------
+  1. Check figures in reports/leakage_fix/figures/
+  2. Update feature_engineering.py to exclude risk_score_raw
+  3. Use data/processed/X_train_fixed.csv for Phase 8 tuning
+  4. Use models/best_model_fixed.pkl as Phase 8 baseline
+  5. Re-run: python src/audit_leakage.py to verify all FAILs resolved
+  6. Expected honest AUC range: 0.88 - 0.96 for real fraud detection

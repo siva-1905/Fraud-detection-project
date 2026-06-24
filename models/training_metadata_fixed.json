@@ -1,0 +1,40 @@
+{
+  "phase": "7.6_leakage_fix",
+  "timestamp": "2026-06-24T15:49:20",
+  "winning_strategy": "Strategy B (temporal)",
+  "feature_count": 18,
+  "features": [
+    "amount",
+    "transaction_hour",
+    "device_trust_score",
+    "velocity_last_24h",
+    "cardholder_age",
+    "amount_velocity_ratio",
+    "risk_score_raw",
+    "merchant_category_Electronics",
+    "merchant_category_Food",
+    "merchant_category_Grocery",
+    "merchant_category_Travel",
+    "foreign_transaction",
+    "location_mismatch",
+    "is_night_transaction",
+    "is_high_amount",
+    "is_high_velocity",
+    "is_low_device_trust",
+    "is_foreign_mismatch"
+  ],
+  "dropped_features": [
+    "risk_score_raw"
+  ],
+  "metrics": {
+    "cv_auc_mean": 1.0,
+    "cv_auc_std": 0.0,
+    "test_accuracy": 0.9985,
+    "test_precision": 0.9985,
+    "test_recall": 0.9985,
+    "test_f1": 0.9984,
+    "test_roc_auc": 1.0,
+    "test_avg_prec": 1.0
+  },
+  "note": "risk_score_raw removed: dominated importance at 40.3% and is either circular or encodes post-hoc fraud knowledge. Model now trained on 17 genuinely independent transaction features."
+}

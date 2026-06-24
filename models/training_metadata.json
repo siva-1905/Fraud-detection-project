@@ -1,0 +1,72 @@
+{
+  "phase": 6,
+  "timestamp": "2026-06-24T16:02:10",
+  "run_duration_sec": 14.13,
+  "python_version": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "X_train_shape_orig": [
+    8000,
+    17
+  ],
+  "X_train_shape_smote": [
+    15758,
+    17
+  ],
+  "X_test_shape": [
+    2000,
+    17
+  ],
+  "feature_names": [
+    "amount",
+    "transaction_hour",
+    "device_trust_score",
+    "velocity_last_24h",
+    "cardholder_age",
+    "amount_velocity_ratio",
+    "merchant_category_Electronics",
+    "merchant_category_Food",
+    "merchant_category_Grocery",
+    "merchant_category_Travel",
+    "foreign_transaction",
+    "location_mismatch",
+    "is_night_transaction",
+    "is_high_amount",
+    "is_high_velocity",
+    "is_low_device_trust",
+    "is_foreign_mismatch"
+  ],
+  "n_features": 17,
+  "cv_folds": 5,
+  "cv_stratified": true,
+  "smote_applied": true,
+  "selection_metric": "roc_auc_mean",
+  "models_trained": [
+    "Logistic Regression",
+    "Decision Tree",
+    "Random Forest",
+    "XGBoost",
+    "SVM"
+  ],
+  "best_model_name": "Random Forest",
+  "best_model_cv_scores": {
+    "accuracy_mean": 0.9997,
+    "accuracy_std": 0.0002,
+    "precision_mean": 0.9997,
+    "precision_std": 0.0002,
+    "recall_mean": 0.9997,
+    "recall_std": 0.0002,
+    "f1_mean": 0.9997,
+    "f1_std": 0.0002,
+    "roc_auc_mean": 1.0,
+    "roc_auc_std": 0.0,
+    "fit_time_sec": 1.88
+  },
+  "best_model_test_metrics": {
+    "accuracy": 0.9975,
+    "precision": 0.9974,
+    "recall": 0.9975,
+    "f1": 0.9974,
+    "roc_auc": 0.9999
+  },
+  "best_model_path": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\fraud_detection_project\\models\\best_model.pkl",
+  "comparison_path": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\fraud_detection_project\\reports\\model_comparison.csv"
+}

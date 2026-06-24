@@ -1,0 +1,15 @@
+{
+    "timestamp": "2026-06-24T16:23:53.439655",
+    "best_score": 0.989186906405074,
+    "best_parameters": {
+        "bootstrap": false,
+        "class_weight": null,
+        "max_depth": 10,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "min_samples_split": 9,
+        "n_estimators": 774
+    },
+    "model": "RandomForestClassifier",
+    "metric": "average_precision"
+}

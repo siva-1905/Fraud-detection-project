@@ -1,0 +1,24 @@
+=================================================================
+  FRAUD DETECTION — DATA LEAKAGE AUDIT REPORT
+  Generated : 2026-06-24 16:03:04
+=================================================================
+  OVERALL VERDICT : WARN
+  SCORE           : 19 / 22
+  FAILs           : 0
+  WARNs           : 3
+  PASSes          : 8
+=================================================================
+
+⚠️  WARNING CHECKS — Investigate before Phase 8:
+  [feature_leakage] single_feature_auc
+  [feature_leakage] drop_top_n_auc
+  [permutation_sanity] shuffled_label_auc
+
+=================================================================
+  NEXT STEPS
+=================================================================
+  1. Open reports/leakage_audit/figures/ and review all plots.
+  2. Address every FAIL before continuing.
+  3. After fixing, re-run: python src/train_model.py && python src/audit_leakage.py
+  4. If all checks pass, proceed to: python src/phase8_tune_model.py
+=================================================================

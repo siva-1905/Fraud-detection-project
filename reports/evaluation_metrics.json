@@ -1,0 +1,53 @@
+{
+  "project": "Fraud Detection",
+  "phase": 7,
+  "timestamp": "2026-06-24T16:16:30",
+  "model": {
+    "name": "RandomForestClassifier",
+    "type": "<class 'sklearn.ensemble._forest.RandomForestClassifier'>"
+  },
+  "dataset": {
+    "test_samples": 2000,
+    "n_features": 17,
+    "feature_names": [
+      "amount",
+      "transaction_hour",
+      "device_trust_score",
+      "velocity_last_24h",
+      "cardholder_age",
+      "amount_velocity_ratio",
+      "merchant_category_Electronics",
+      "merchant_category_Food",
+      "merchant_category_Grocery",
+      "merchant_category_Travel",
+      "foreign_transaction",
+      "location_mismatch",
+      "is_night_transaction",
+      "is_high_amount",
+      "is_high_velocity",
+      "is_low_device_trust",
+      "is_foreign_mismatch"
+    ],
+    "positive_rate": 0.015
+  },
+  "metrics": {
+    "accuracy": 0.9975,
+    "precision": 0.997447,
+    "recall": 0.9975,
+    "f1_score": 0.997435,
+    "roc_auc": 0.999882,
+    "avg_precision": 0.990616
+  },
+  "confusion_matrix": {
+    "true_negative": 1969,
+    "false_positive": 1,
+    "false_negative": 4,
+    "true_positive": 26
+  },
+  "figures": {
+    "confusion_matrix": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\fraud_detection_project\\reports\\figures\\confusion_matrix.png",
+    "roc_curve": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\fraud_detection_project\\reports\\figures\\roc_curve.png",
+    "precision_recall_curve": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\fraud_detection_project\\reports\\figures\\precision_recall_curve.png",
+    "feature_importance": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\fraud_detection_project\\reports\\figures\\feature_importance.png"
+  }
+}

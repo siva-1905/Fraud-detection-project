@@ -1,0 +1,157 @@
+2026-06-23 22:22:05 | INFO     | ============================================================
+2026-06-23 22:22:05 | INFO     | PHASE 7 — Model Evaluation Pipeline
+2026-06-23 22:22:05 | INFO     | ============================================================
+2026-06-23 22:22:05 | INFO     | Validating required artifacts …
+2026-06-23 22:22:05 | INFO     | Loading model from: C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\models\best_model.pkl
+2026-06-23 22:22:06 | INFO     | Loading test data …
+2026-06-23 22:22:06 | INFO     | Generating predictions …
+2026-06-23 22:22:06 | INFO     | Computing evaluation metrics …
+2026-06-23 22:22:06 | INFO     |   Accuracy        : 0.999500
+2026-06-23 22:22:06 | INFO     |   Precision       : 0.999516
+2026-06-23 22:22:06 | INFO     |   Recall          : 0.999500
+2026-06-23 22:22:06 | INFO     |   F1 Score        : 0.999504
+2026-06-23 22:22:06 | INFO     |   ROC-AUC         : 1.000000
+2026-06-23 22:22:06 | INFO     |   Avg Precision   : 1.000000
+2026-06-23 22:22:06 | INFO     | ------------------------------------------------------------
+2026-06-23 22:22:06 | INFO     | Generating evaluation plots …
+2026-06-23 22:22:06 | INFO     | Plotting confusion matrix …
+2026-06-23 22:22:06 | ERROR    | Unhandled error in Phase 7: Unknown format code 'd' for object of type 'float'
+Traceback (most recent call last):
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\src\evaluate_model.py", line 578, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\src\evaluate_model.py", line 533, in main
+    cm_path  = plot_confusion_matrix(y_test, y_pred, class_names)
+  File "C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\src\evaluate_model.py", line 290, in plot_confusion_matrix
+    text.set_text(f"{val:{fmt}}" + ("%" if fmt == ".1f" else ""))
+                    ^^^^^^^^^^^
+ValueError: Unknown format code 'd' for object of type 'float'
+2026-06-23 22:28:43 | INFO     | ============================================================
+2026-06-23 22:28:43 | INFO     | PHASE 7 — Model Evaluation Pipeline
+2026-06-23 22:28:43 | INFO     | ============================================================
+2026-06-23 22:28:43 | INFO     | Validating required artifacts …
+2026-06-23 22:28:43 | INFO     | Loading model from: C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\models\best_model.pkl
+2026-06-23 22:28:43 | INFO     | Loading test data …
+2026-06-23 22:28:43 | INFO     | Generating predictions …
+2026-06-23 22:28:43 | INFO     | Computing evaluation metrics …
+2026-06-23 22:28:43 | INFO     |   Accuracy        : 0.999500
+2026-06-23 22:28:43 | INFO     |   Precision       : 0.999516
+2026-06-23 22:28:43 | INFO     |   Recall          : 0.999500
+2026-06-23 22:28:43 | INFO     |   F1 Score        : 0.999504
+2026-06-23 22:28:43 | INFO     |   ROC-AUC         : 1.000000
+2026-06-23 22:28:43 | INFO     |   Avg Precision   : 1.000000
+2026-06-23 22:28:43 | INFO     | ------------------------------------------------------------
+2026-06-23 22:28:43 | INFO     | Generating evaluation plots …
+2026-06-23 22:28:43 | INFO     | Plotting confusion matrix …
+2026-06-23 22:28:44 | INFO     | Plotting ROC curve …
+2026-06-23 22:28:44 | INFO     | Plotting Precision-Recall curve …
+2026-06-23 22:28:45 | INFO     | Plotting feature importances …
+2026-06-23 22:28:46 | INFO     | Saving classification report …
+2026-06-23 22:28:46 | INFO     | 
+============================================================
+  Fraud Detection — Classification Report
+  Model : RandomForestClassifier
+  Date  : 2026-06-23 22:28:46
+============================================================
+
+              precision    recall  f1-score   support
+
+  Legitimate   1.000000  0.999492  0.999746      1970
+       Fraud   0.967742  1.000000  0.983607        30
+
+    accuracy                       0.999500      2000
+   macro avg   0.983871  0.999746  0.991676      2000
+weighted avg   0.999516  0.999500  0.999504      2000
+
+2026-06-23 22:28:46 | INFO     | Exporting evaluation metrics to JSON …
+2026-06-23 22:28:46 | INFO     | ============================================================
+2026-06-23 22:28:46 | INFO     | EVALUATION COMPLETE  (2.7 seconds)
+2026-06-23 22:28:46 | INFO     | ============================================================
+2026-06-23 22:28:46 | INFO     | Outputs:
+2026-06-23 22:28:46 | INFO     | ============================================================
+2026-06-24 16:13:10 | INFO     | ============================================================
+2026-06-24 16:13:10 | INFO     | PHASE 7 — Model Evaluation Pipeline
+2026-06-24 16:13:10 | INFO     | ============================================================
+2026-06-24 16:13:10 | INFO     | Validating required artifacts …
+2026-06-24 16:13:10 | INFO     | Loading model from: C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\models\best_model.pkl
+2026-06-24 16:13:10 | INFO     | Loading test data …
+2026-06-24 16:13:10 | INFO     | Generating predictions …
+2026-06-24 16:13:10 | INFO     | Computing evaluation metrics …
+2026-06-24 16:13:10 | INFO     |   Accuracy        : 0.997500
+2026-06-24 16:13:10 | INFO     |   Precision       : 0.997447
+2026-06-24 16:13:10 | INFO     |   Recall          : 0.997500
+2026-06-24 16:13:10 | INFO     |   F1 Score        : 0.997435
+2026-06-24 16:13:10 | INFO     |   ROC-AUC         : 0.999882
+2026-06-24 16:13:10 | INFO     |   Avg Precision   : 0.990616
+2026-06-24 16:13:10 | INFO     | ------------------------------------------------------------
+2026-06-24 16:13:10 | INFO     | Generating evaluation plots …
+2026-06-24 16:13:10 | INFO     | Plotting confusion matrix …
+2026-06-24 16:13:10 | INFO     | Plotting ROC curve …
+2026-06-24 16:13:10 | INFO     | Plotting Precision-Recall curve …
+2026-06-24 16:13:10 | INFO     | Plotting feature importances …
+2026-06-24 16:13:11 | INFO     | Saving classification report …
+2026-06-24 16:13:11 | INFO     | 
+============================================================
+  Fraud Detection — Classification Report
+  Model : RandomForestClassifier
+  Date  : 2026-06-24 16:13:11
+============================================================
+
+              precision    recall  f1-score   support
+
+  Legitimate   0.997973  0.999492  0.998732      1970
+       Fraud   0.962963  0.866667  0.912281        30
+
+    accuracy                       0.997500      2000
+   macro avg   0.980468  0.933080  0.955506      2000
+weighted avg   0.997447  0.997500  0.997435      2000
+
+2026-06-24 16:13:11 | INFO     | Exporting evaluation metrics to JSON …
+2026-06-24 16:13:11 | INFO     | ============================================================
+2026-06-24 16:13:11 | INFO     | EVALUATION COMPLETE  (1.0 seconds)
+2026-06-24 16:13:11 | INFO     | ============================================================
+2026-06-24 16:13:11 | INFO     | Outputs:
+2026-06-24 16:13:11 | INFO     | ============================================================
+2026-06-24 16:16:29 | INFO     | ============================================================
+2026-06-24 16:16:29 | INFO     | PHASE 7 — Model Evaluation Pipeline
+2026-06-24 16:16:29 | INFO     | ============================================================
+2026-06-24 16:16:29 | INFO     | Validating required artifacts …
+2026-06-24 16:16:29 | INFO     | Loading model from: C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\models\best_model.pkl
+2026-06-24 16:16:29 | INFO     | Loading test data …
+2026-06-24 16:16:29 | INFO     | Generating predictions …
+2026-06-24 16:16:29 | INFO     | Computing evaluation metrics …
+2026-06-24 16:16:29 | INFO     |   Accuracy        : 0.997500
+2026-06-24 16:16:29 | INFO     |   Precision       : 0.997447
+2026-06-24 16:16:29 | INFO     |   Recall          : 0.997500
+2026-06-24 16:16:29 | INFO     |   F1 Score        : 0.997435
+2026-06-24 16:16:29 | INFO     |   ROC-AUC         : 0.999882
+2026-06-24 16:16:29 | INFO     |   Avg Precision   : 0.990616
+2026-06-24 16:16:29 | INFO     | ------------------------------------------------------------
+2026-06-24 16:16:29 | INFO     | Generating evaluation plots …
+2026-06-24 16:16:29 | INFO     | Plotting confusion matrix …
+2026-06-24 16:16:29 | INFO     | Plotting ROC curve …
+2026-06-24 16:16:29 | INFO     | Plotting Precision-Recall curve …
+2026-06-24 16:16:30 | INFO     | Plotting feature importances …
+2026-06-24 16:16:30 | INFO     | Saving classification report …
+2026-06-24 16:16:30 | INFO     | 
+============================================================
+  Fraud Detection — Classification Report
+  Model : RandomForestClassifier
+  Date  : 2026-06-24 16:16:30
+============================================================
+
+              precision    recall  f1-score   support
+
+  Legitimate   0.997973  0.999492  0.998732      1970
+       Fraud   0.962963  0.866667  0.912281        30
+
+    accuracy                       0.997500      2000
+   macro avg   0.980468  0.933080  0.955506      2000
+weighted avg   0.997447  0.997500  0.997435      2000
+
+2026-06-24 16:16:30 | INFO     | Exporting evaluation metrics to JSON …
+2026-06-24 16:16:30 | INFO     | ============================================================
+2026-06-24 16:16:30 | INFO     | EVALUATION COMPLETE  (1.1 seconds)
+2026-06-24 16:16:30 | INFO     | ============================================================
+2026-06-24 16:16:30 | INFO     | Outputs:
+2026-06-24 16:16:30 | INFO     | ============================================================

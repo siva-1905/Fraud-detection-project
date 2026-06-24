@@ -1,0 +1,131 @@
+{
+  "project": "Fraud Detection \u2014 Leakage Audit",
+  "phase": "7.5",
+  "timestamp": "2026-06-24T16:03:04",
+  "overall_verdict": "WARN",
+  "score": "19/22",
+  "summary": {
+    "FAIL": 0,
+    "WARN": 3,
+    "PASS": 8
+  },
+  "details": [
+    {
+      "test": "feature_leakage",
+      "check": "dominant_importance",
+      "verdict": "\u2705 PASS  \u2014 No leakage detected",
+      "top_feature": "transaction_hour",
+      "top_importance": 0.1688,
+      "top5_cumulative": 0.6963
+    },
+    {
+      "test": "feature_leakage",
+      "check": "single_feature_auc",
+      "verdict": "\u26a0\ufe0f  WARN  \u2014 Investigate further",
+      "results": {
+        "transaction_hour": 0.8663,
+        "is_low_device_trust": 0.8003,
+        "device_trust_score": 0.7991,
+        "foreign_transaction": 0.7563,
+        "is_night_transaction": 0.8471
+      }
+    },
+    {
+      "test": "feature_leakage",
+      "check": "drop_top_n_auc",
+      "results": {
+        "drop_top_1": 0.997,
+        "drop_top_3": 0.9543,
+        "drop_top_5": 0.7775
+      },
+      "verdict": "\u26a0\ufe0f  WARN  \u2014 Investigate further"
+    },
+    {
+      "test": "duplicate_rows",
+      "check": "train_test_overlap",
+      "verdict": "\u2705 PASS  \u2014 No leakage detected",
+      "feature_overlap_rows": 0,
+      "feature_label_overlap_rows": 0,
+      "overlap_pct": 0.0,
+      "train_internal_duplicates": 0,
+      "test_internal_duplicates": 0
+    },
+    {
+      "test": "smote_leakage",
+      "check": "train_class_balance",
+      "verdict": "\u2705 PASS  \u2014 No leakage detected",
+      "fraud_rate_train": 0.0151,
+      "fraud_rate_test": 0.015,
+      "n_class_0": 7879,
+      "n_class_1": 121
+    },
+    {
+      "test": "smote_leakage",
+      "check": "smote_nn_proximity",
+      "verdict": "\u2705 PASS  \u2014 No leakage detected",
+      "min_distance": 0.43306,
+      "mean_distance": 1.365312,
+      "exact_matches": 0
+    },
+    {
+      "test": "temporal_leakage",
+      "check": "temporal_split_auc",
+      "verdict": "\u2705 PASS  \u2014 No leakage detected",
+      "auc_random_split": 1.0,
+      "auc_temporal_split": 1.0,
+      "delta": 0.0,
+      "time_columns_found": [
+        "transaction_hour"
+      ]
+    },
+    {
+      "test": "target_correlation",
+      "check": "target_correlation",
+      "verdict": "\u2705 PASS  \u2014 No leakage detected",
+      "high_corr_features": [],
+      "warn_corr_features": [],
+      "top10_correlations": {
+        "is_foreign_mismatch": 0.2364,
+        "is_low_device_trust": 0.1942,
+        "foreign_transaction": 0.179,
+        "location_mismatch": 0.1679,
+        "is_night_transaction": 0.1583,
+        "device_trust_score": 0.1376,
+        "transaction_hour": 0.1348,
+        "is_high_velocity": 0.1119,
+        "velocity_last_24h": 0.1089,
+        "amount": 0.0278
+      }
+    },
+    {
+      "test": "permutation_sanity",
+      "check": "shuffled_label_auc",
+      "verdict": "\u26a0\ufe0f  WARN  \u2014 Investigate further",
+      "auc_shuffled_labels": 0.6144
+    },
+    {
+      "test": "permutation_sanity",
+      "check": "permutation_importance",
+      "verdict": "\u2705 PASS  \u2014 No leakage detected",
+      "top_feature": "foreign_transaction",
+      "top_feature_auc_drop": 0.0282,
+      "zero_importance_features": [
+        "amount",
+        "cardholder_age",
+        "amount_velocity_ratio",
+        "merchant_category_Electronics",
+        "merchant_category_Food",
+        "merchant_category_Grocery",
+        "is_high_amount"
+      ]
+    },
+    {
+      "test": "permutation_sanity",
+      "check": "null_model_auc",
+      "verdict": "\u2705 PASS  \u2014 No leakage detected",
+      "auc_null_model": 0.5,
+      "note": "Your AUC should far exceed this baseline."
+    }
+  ],
+  "figures_dir": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\fraud_detection_project\\reports\\leakage_audit\\figures"
+}

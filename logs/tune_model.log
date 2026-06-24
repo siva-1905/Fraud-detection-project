@@ -1,0 +1,26 @@
+2026-06-24 16:21:30,464 | INFO     | ============================================================
+2026-06-24 16:21:30,464 | INFO     | PHASE 8 - Hyperparameter Tuning
+2026-06-24 16:21:30,464 | INFO     | ============================================================
+2026-06-24 16:21:30,464 | INFO     | Loading training data...
+2026-06-24 16:21:30,483 | INFO     | Training shape: (8000, 17) | Target shape: (8000,)
+2026-06-24 16:21:30,483 | INFO     | Building base model...
+2026-06-24 16:21:30,484 | INFO     | Starting RandomizedSearchCV...
+2026-06-24 16:23:53,334 | INFO     | Best Average Precision: 0.989187
+2026-06-24 16:23:53,339 | INFO     | Best Parameters: {'bootstrap': False, 'class_weight': None, 'max_depth': 10, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 9, 'n_estimators': 774}
+2026-06-24 16:23:53,426 | INFO     | Saved tuned model -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\models\tuned_model.pkl
+2026-06-24 16:23:53,439 | INFO     | Saved search results -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\reports\tuning_results.csv
+2026-06-24 16:23:53,441 | INFO     | Saved summary -> C:\Users\ADMIN\OneDrive\Desktop\fraud_detection_project\reports\tuning_summary.json
+2026-06-24 16:23:53,847 | INFO     | Test Average Precision: 1.000000
+2026-06-24 16:23:53,855 | INFO     | 
+              precision    recall  f1-score   support
+
+           0   1.000000  1.000000  1.000000      1970
+           1   1.000000  1.000000  1.000000        30
+
+    accuracy                       1.000000      2000
+   macro avg   1.000000  1.000000  1.000000      2000
+weighted avg   1.000000  1.000000  1.000000      2000
+
+2026-06-24 16:23:53,855 | INFO     | ============================================================
+2026-06-24 16:23:53,856 | INFO     | Tuning complete in 143.39 seconds
+2026-06-24 16:23:53,856 | INFO     | ============================================================
